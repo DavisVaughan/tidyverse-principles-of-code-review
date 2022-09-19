@@ -1,6 +1,6 @@
 ---
 title: "Principles of code review"
-format: html
+format: markdown_github
 editor: visual
 ---
 
