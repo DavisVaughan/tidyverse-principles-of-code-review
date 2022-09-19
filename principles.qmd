@@ -6,7 +6,7 @@ editor: visual
 
 ## Introduction
 
-"There\'s scarcely any guidance on preparing your code for review, so authors often screw up this process out of sheer ignorance." - Michael Lynch
+"There's scarcely any guidance on preparing your code for review, so authors often screw up this process out of sheer ignorance." - Michael Lynch
 
 The point of these principles is to provide some actual guidance on code review at RStudio and for the larger R community.
 
@@ -31,9 +31,8 @@ Commenting on your own pull requests is a super power.
 
 -   Practically, on GitHub this involves first opening the pull request and submitting it, then following up to "leave a review" yourself, adding comments on specific lines of the code you touched.
 
-```{=html}
 <!-- -->
-```
+
 -   It allows you to raise awareness of places in your changes that don't quite warrant a code comment, but are still meaningful to point out for the reviewer.
     Example: Explaining that line 603 is the particularly problematic one that is now covered by the new test you added.
 
@@ -55,7 +54,7 @@ For me, the best pull requests are ones where I can guess at the code changes ba
 Wait for CI to pass before asking for a review.
 A failing CI build often means that you need to make more changes to the pull request, and you should try to get as many of the small things out of the way first before bringing in your reviewer.
 
-## Write for the code archaeologists 
+## Write for the code archaeologists
 
 Even if you aren't planning on asking for a review from someone else, it is often useful to document your pull requests as outlined above.
 Your reviewer might not be someone today, but it might be *you* six months from now when the feature you thought you added correctly starts having an issue.
@@ -120,8 +119,7 @@ I also find that minimizing comments like that is a great way to keep track of w
     i.e. be nice and thoughtful when leaving critical feedback.
     Know that "meaning" is hard to express through text and can be interpreted differently by different people.
 
-    -   Don't just say, "this is confusing." This is often hard to interpret, is too ambiguous, and can be frustrating for the person writing the pull request who receives this feedback.
-        Try to be specific about what exactly is confusing, and offer up a potential solution or a suggestion to add a test or comment about what is happening there.
+    -   Don't just say, "this is confusing." This is often hard to interpret, is too ambiguous, and can be frustrating for the person writing the pull request who receives this feedback. Try to be specific about what exactly is confusing, and offer up a potential solution or a suggestion to add a test or comment about what is happening there.
 
 ## References
 
