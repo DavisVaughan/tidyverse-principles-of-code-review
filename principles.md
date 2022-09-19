@@ -45,9 +45,6 @@ Commenting on your own pull requests is a super power.
     and submitting it, then following up to "leave a review" yourself,
     adding comments on specific lines of the code you touched.
 
-```{=html}
-<!-- -->
-```
 -   It allows you to raise awareness of places in your changes that
     don't quite warrant a code comment, but are still meaningful to
     point out for the reviewer. Example: Explaining that line 603 is the

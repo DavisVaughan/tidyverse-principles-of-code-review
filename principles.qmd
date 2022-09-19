@@ -31,8 +31,6 @@ Commenting on your own pull requests is a super power.
 
 -   Practically, on GitHub this involves first opening the pull request and submitting it, then following up to "leave a review" yourself, adding comments on specific lines of the code you touched.
 
-<!-- -->
-
 -   It allows you to raise awareness of places in your changes that don't quite warrant a code comment, but are still meaningful to point out for the reviewer.
     Example: Explaining that line 603 is the particularly problematic one that is now covered by the new test you added.
 
