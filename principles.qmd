@@ -1,0 +1,128 @@
+---
+title: "Principles of code review"
+format: html
+editor: visual
+---
+
+## Introduction
+
+"There\'s scarcely any guidance on preparing your code for review, so authors often screw up this process out of sheer ignorance." - Michael Lynch
+
+The point of these principles is to provide some actual guidance on code review at RStudio and for the larger R community.
+
+## Why do we care?
+
+-   Doing this somewhat consistently internally will set a model that new members of our team can follow, which in turn makes everyone's lives easier.
+
+-   It's the help-me-help-you mantra of reprex all over again.
+    By being a good pull request writer, you make it easier for your colleague to be a good pull request reviewer, which in turn leads to better code.
+
+## Be your own critic
+
+Before handing off a pull request to someone else, ensure that you've done your due diligence to check for typos, syntax issues, and potential bugs you might have introduced.
+It is perfectly acceptable to finish a feature, sit on it for the night, review it the next morning yourself, and *then* open the pull request.
+You'd be surprised at how many bugs you can catch yourself, freeing up the mental space of your reviewer.
+
+This principle could also be called "Respect your reviewer's time." Remember that someone is taking time out of their day to review your work; you should be respectful of that!
+Even if it is part of their job, they often have their own responsibilities to work on as well.
+Reviewing your code is pulling from their finite supply of focus and hours in the day.
+
+Commenting on your own pull requests is a super power.
+
+-   Practically, on GitHub this involves first opening the pull request and submitting it, then following up to "leave a review" yourself, adding comments on specific lines of the code you touched.
+
+```{=html}
+<!-- -->
+```
+-   It allows you to raise awareness of places in your changes that don't quite warrant a code comment, but are still meaningful to point out for the reviewer.
+    Example: Explaining that line 603 is the particularly problematic one that is now covered by the new test you added.
+
+-   It allows you to start a conversation about particular points of the feature you feel like you might still need help with.
+    Example: "I've written this as an if/else statement, but it might be cleaner as an early return. Do you have any preference?"
+
+-   The other really nice thing about doing something like this on GitHub is that the comment you open with a discussion point is a natural place to expand a *thread* of comments specifically about that point.
+    All of the comments about that part of the feature are localized to the area in the code that it affects, and then can be minimized all at once when the discussion is finished.
+
+Use the opening comment of your pull request as a way to bring your reviewer up to speed.
+For me, the best pull requests are ones where I can guess at the code changes based on reading the opening comment, without even looking at the files that have been changed.
+
+-   Link to any issues that this pull request closes, using the special `Fixes #502` or `Closes #502` syntax that GitHub allows.
+    You might also link to any related issues or pull requests.
+
+-   If applicable, show the output of the original buggy issue before and after running the pull request.
+    This is a clear indicator of what behavior has changed.
+
+Wait for CI to pass before asking for a review.
+A failing CI build often means that you need to make more changes to the pull request, and you should try to get as many of the small things out of the way first before bringing in your reviewer.
+
+## Write for the code archaeologists 
+
+Even if you aren't planning on asking for a review from someone else, it is often useful to document your pull requests as outlined above.
+Your reviewer might not be someone today, but it might be *you* six months from now when the feature you thought you added correctly starts having an issue.
+You'll be thankful for documentation that outlines the feature and any tricky parts of the code you were aware of at the time when you added it.
+
+Additionally, it is always worth linking to the issue number that prompted this pull request somewhere in the codebase.
+This ensures that future you (or your colleague) will be able to dig up the pull request more easily in the future if something isn't working right.
+There are three places I normally put sign posts like these, in decreasing order of frequency:
+
+-   NEWS bullets.
+    Almost all pull requests should get a NEWS bullet.
+    Even if this isn't a user facing change, it can often be useful to document "internal changes" in a section for the development team to reference in the future.
+    The RStudio IDE will now also automatically create a hyperlink from something like `#534` to the issue page on the project's GitHub repository.
+
+-   The relevant test.
+    Most pull requests also gain a related test to ensure that the bug never creeps up again.
+    This is a *great* place to add the issue number.
+    The RStudio IDE will also link issues mentioned here to GitHub.
+
+-   As a code comment in the code itself.
+    I do this somewhat rarely, because I don't want to clutter otherwise understandable code with extra comments.
+    I typically do this in two places:
+
+    -   When the finalized code (after the fix) looks so innocuous that someone might be tempted to change it in the future, you can head that off by adding a comment describing *why* the code is the way it is with a link back to the original issue (a good test will also catch this).
+
+    -   When I have a TODO that can't be fixed at the current moment because it is blocked by another issue, but is something I'd like to come back to once that other issue is solved.
+        In those cases, I often link out to the blocking issue instead of the one I am currently solving.
+
+In the cases where you submit a pull request that doesn't close an issue, I will often open the pull request to force it to generate a pull request number on GitHub, then follow up with a second commit that adds the pull request number to the NEWS bullet or relevant test.
+
+## Do one thing
+
+Pull requests that are limited to doing *exactly* one thing make your reviewer's life much easier.
+As a reviewer, if you are looking at a pull request that fixes a bug *and* works in a few other documentation improvements, it is much harder to review than two separate pull requests that accomplish the same thing.
+Resist the urge to do *one more thing* in your pull requests.
+
+Limiting your pull requests to one idea allows your reviewer to think more deeply about the code itself, which often results in more meaningful feedback and a higher percentage chance of catching edge cases.
+
+## Respond to your reviewers
+
+If someone is nice enough to leave you a review, the least you can do is respond to their comments.
+This might be as simple as giving the comment a 👍 and then minimizing it after making the change, but some kind of recognition of their efforts to help you out is always appreciated.
+I also find that minimizing comments like that is a great way to keep track of what you have tackled, and what part of the review you still have to finish up!
+
+## Advice for the reviewer
+
+-   Pull requests often take a long time to review, and that is okay.
+    For a sizable review, it can sometimes take me thirty minutes to an hour to fully vet it.
+    This should be normalized, and is part of your work responsibilities.
+    Don't just give it a LGTM and move on.
+
+-   Check out the pull request locally.
+    Tools like `usethis::pr_fetch()` make this laughably easy.
+    Try out edge cases yourself, look for places where the changes might fall short.
+    This also gives you a chance to make a meaningful reprex for the pull request writer if you do find a bug.
+
+-   Live reviewing someone else's pull request can be a great way to pair program.
+    As the pull request writer, you get a peek into how the other person is thinking about your code, which can give you a lot of insight into how you could structure your pull request to make it easier for them to review in the future.
+    As the pull request reviewer, you get a chance to ask questions about parts of the code that you are immediately confused by.
+
+-   Review as you'd want to be reviewed.
+    i.e. be nice and thoughtful when leaving critical feedback.
+    Know that "meaning" is hard to express through text and can be interpreted differently by different people.
+
+    -   Don't just say, "this is confusing." This is often hard to interpret, is too ambiguous, and can be frustrating for the person writing the pull request who receives this feedback.
+        Try to be specific about what exactly is confusing, and offer up a potential solution or a suggestion to add a test or comment about what is happening there.
+
+## References
+
+<https://mtlynch.io/code-review-love/>
