@@ -188,6 +188,18 @@ have to finish up!
         potential solution or a suggestion to add a test or comment
         about what is happening there.
 
+## Thoughts
+
+-   How fast is it expected that you review someone's PR? PRs count as
+    interrupts in your time, so you need to manage them carefully, but
+    you also want to make sure that you aren't blocking anyone.
+
+-   `What changes would be helpful?` is an incredibly powerful way to
+    garner more information about some abstract feedback that a reviewer
+    has given you. It is *just* the right phrasing where you don't sound
+    passive aggressive, but instead sound like you genuinely care about
+    improving the PR but you don't know where to make changes.
+
 ## References
 
 <https://mtlynch.io/code-review-love/>
