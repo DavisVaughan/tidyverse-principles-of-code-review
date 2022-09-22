@@ -188,7 +188,7 @@ have to finish up!
         potential solution or a suggestion to add a test or comment
         about what is happening there.
 
-## Thoughts
+## Thoughts from book club
 
 -   How fast is it expected that you review someone's PR? PRs count as
     interrupts in your time, so you need to manage them carefully, but
@@ -199,6 +199,11 @@ have to finish up!
     has given you. It is *just* the right phrasing where you don't sound
     passive aggressive, but instead sound like you genuinely care about
     improving the PR but you don't know where to make changes.
+
+-   If the feature or change seems like it is going to be large, make
+    sure that you open an issue first to ensure that it is something
+    that needs to be fixed. This also gives you a way to ask for design
+    feedback before actually implementing anything.
 
 ## References
 

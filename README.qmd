@@ -119,13 +119,16 @@ I also find that minimizing comments like that is a great way to keep track of w
 
     -   Don't just say, "this is confusing." This is often hard to interpret, is too ambiguous, and can be frustrating for the person writing the pull request who receives this feedback. Try to be specific about what exactly is confusing, and offer up a potential solution or a suggestion to add a test or comment about what is happening there.
 
-## Thoughts
+## Thoughts from book club
 
 -   How fast is it expected that you review someone's PR?
     PRs count as interrupts in your time, so you need to manage them carefully, but you also want to make sure that you aren't blocking anyone.
 
 -   `What changes would be helpful?` is an incredibly powerful way to garner more information about some abstract feedback that a reviewer has given you.
     It is *just* the right phrasing where you don't sound passive aggressive, but instead sound like you genuinely care about improving the PR but you don't know where to make changes.
+
+-   If the feature or change seems like it is going to be large, make sure that you open an issue first to ensure that it is something that needs to be fixed.
+    This also gives you a way to ask for design feedback before actually implementing anything.
 
 ## References
 
